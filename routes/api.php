@@ -89,13 +89,6 @@ Route::prefix('v1')->group(function () {
             Route::prefix('rolelevel')->group(function () {
                 Route::get('data', 'App\Http\Controllers\Admin\RoleLevelController@Data');
             });
-            Route::prefix('option')->group(function (){
-                Route::get('data', 'App\Http\Controllers\Admin\OptionController@Data');
-                Route::get('{id}', 'App\Http\Controllers\Admin\OptionController@DataId');
-                Route::delete('delete/{id}', 'App\Http\Controllers\Admin\OptionController@DataDelete');
-                Route::post('update/{id}', 'App\Http\Controllers\Admin\OptionController@Update');
-                Route::post('register', 'App\Http\Controllers\Admin\OptionController@Register');
-            });
         });
     });
 });
@@ -135,6 +128,10 @@ Route::middleware('auth:api')->group(function () {
             Route::delete('delete/{id}', 'App\Http\Controllers\Admin\AksesController@delete');
             Route::post('update/{id}', 'App\Http\Controllers\Admin\AksesController@update');
             Route::post('register', 'App\Http\Controllers\Admin\AksesController@register');
+        });
+        Route::prefix('option')->group(function (){
+            Route::get('data', 'App\Http\Controllers\Admin\OptionController@index');
+            Route::post('update/{id}', 'App\Http\Controllers\Admin\OptionController@update');
         });
     });
 });

@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Option;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class OptionController extends Controller
 {
-    public function Data() {
+    public function index() {
         $data = Option::all();
         foreach ($data as $d){
             if (Storage::exists($d['avatar'])) {
@@ -30,7 +31,49 @@ class OptionController extends Controller
         ], 200);
     }
 
-    public function Register() {
-        $option = new Option();
+    public function update(Request $request, $id) {
+        $data = Option::find($id);
+
+        if ($request->avatar == "") {
+            $avatarFile = null;
+        } else {
+            $avatar64 = $request->avatar;
+            $extension = explode('/', mime_content_type($avatar64))[1];
+            if ($extension === 'jpeg' or $extension === 'jpg') {
+                $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
+                return $avatar;
+            } elseif ($extension === 'png') {
+                $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
+            }
+            $now = Carbon::now()->timestamp;
+            Storage::put($now . '.jpg', $avatar);
+            $avatarFile = $now . '.jpg';
+        }
+
+        try {
+            $data->update([
+                'header1' => $request->input('header1'),
+                'header2' => $request->input('header2'),
+                'companycode' => $request->input('companycode'),
+                'companyname' => $request->input('companyname'),
+                'companyaddress' => $request->input('companyaddress'),
+                'companycity' => $request->input('companycity'),
+                'companyphone' => $request->input('companyphone'),
+                'companyfax' => $request->input('companyfax'),
+                'companyemail' => $request->input('companyemail'),
+                'companyfacebookid' => $request->input('companyfacebookid'),
+                'companytwitterid' => $request->input('companytwiiterid'),
+                'avatar' => $avatarFile,
+
+            ]);
+            Response::json([
+                'status' => 'success',
+            ], 200);
+        } catch (\Throwable $tr) {
+            Response::json([
+                'error' => 'error',
+                'error_status' => $tr
+            ],403);
+        }
     }
 }

@@ -185,9 +185,17 @@ class AksesManagerController extends Controller
 
     public function DataDelete($id) {
         $data = AksesManager::find($id);
-//        $data->delete();
-        return Response::json([
-            'status' => 'success'
-        ],204);
+
+        try {
+            $data->delete();
+            return Response::json([
+                'status' => 'success'
+            ],204);
+        } catch (\Throwable $tr) {
+            return Response::json([
+                'error' => 'error',
+                'data' => $tr,
+            ]);
+        }
     }
 }

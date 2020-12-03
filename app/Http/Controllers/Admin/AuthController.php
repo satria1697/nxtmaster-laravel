@@ -32,8 +32,8 @@ class AuthController extends Controller
             'email',
             'phone',
             'levelid',
-            'neverexpired',
             'active',
+            'neverexpired',
             'structureid',
         ];
     }
@@ -63,6 +63,7 @@ class AuthController extends Controller
 
     private function avatar64($avatar64) {
         if ($avatar64 != "null") {
+//            return $avatar64;
             $extension =  explode('/', mime_content_type($avatar64))[1];
             if ($extension === 'jpeg' or $extension === 'jpg') {
                 $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
@@ -130,7 +131,6 @@ class AuthController extends Controller
         $data->save();
         $id = $data->id;
         $akses = json_decode($request->input('akses'), true);
-//        return $akses
         foreach ($akses as $a) {
             $userrole = AksesUser::where('userid', '=', $id)->where('roleid', '=', $a['id'])->first();
             if (! isNull($userrole)) {
@@ -253,20 +253,22 @@ class AuthController extends Controller
             ], 422);
         }
 
-        if ($request->avatar == "null") {
-            $avatarFile = null;
-        } else {
-            $avatar64 = $request->avatar;
-            $extension =  explode('/', mime_content_type($avatar64))[1];
-            if ($extension === 'jpeg' or $extension === 'jpg') {
-                $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
+        if ($request->avatarChange === "true") {
+            if ($request->avatar == "") {
+                $avatarFile = null;
+            } else {
+                $avatar64 = $request->avatar;
+                $extension = explode('/', mime_content_type($avatar64))[1];
+                if ($extension === 'jpeg' or $extension === 'jpg') {
+                    $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
+                    return $avatar;
+                } elseif ($extension === 'png') {
+                    $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
+                }
+                $now = Carbon::now()->timestamp;
+                Storage::put($now . '.jpg', $avatar);
+                $avatarFile = $now . '.jpg';
             }
-            elseif ($extension === 'png') {
-                $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
-            }
-            $now = Carbon::now()->timestamp;
-            Storage::put($now.'.jpg', $avatar);
-            $avatarFile = $now.'.jpg';
         }
 
         $data = User::find($id);
@@ -278,9 +280,12 @@ class AuthController extends Controller
                     $base => $request->input($base)
                 ]);
             }
-            $data->update([
-               'avatar' => $avatarFile
-            ]);
+            if ($request->avatarChange === "true") {
+                $data->update([
+                    'avatar' => $avatarFile
+                ]);
+            }
+
             if ($request->password != "undefined") {
                 $data->update([
                     'password' => bcrypt($request->password),

@@ -1,38 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Siska;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\AksesUser;
+use App\Models\Siska\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
 
-class AksesUserController extends Controller
+class StatusController extends Controller
 {
     /* base */
     private function basecolumn() {
         return $basecolumn=[
-            'userid',
-            'roleid',
+            'description',
+            'warna',
+            'nilai'
         ];
     }
 
     private function validation($data) {
         $rules = [
-            'description' => 'required|min:3',
+            'description' => 'required|min:2',
+            'warna' => 'required',
+            'nilai' => 'required|numeric'
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {
-            return false;
+            return [false, $v];
         }
-        return true;
+        return [true, $v];
     }
 
     private function can() {
         $levelid = auth()->payload()->get('levelid');
-        if ($levelid > 2) {
+        if ($levelid > 3) {
             return false;
         }
         return true;
@@ -41,19 +44,24 @@ class AksesUserController extends Controller
     /* create */
     public function store(Request $request)
     {
+//        return $request;
         if (! $this->can()) {
             return Response::json([
                 'error' => 'Tidak memiliki otorisasi',
             ], 403);
         }
 
-        if (! $this->validation($request->all())) {
+        $value = $this->validation($request->all());
+        $status = $value[0];
+        $v = $value[1];
+        if (! $status) {
             return Response::json([
                 'status' => 'error',
+                'error' => $v->errors(),
             ], 422);
         };
 
-        $data = new AksesUser();
+        $data = new Status();
         $basecolumn = $this->basecolumn();
         foreach ($basecolumn as $base) {
             $data->{$base} = $request->input($base);
@@ -79,14 +87,14 @@ class AksesUserController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = AksesUser::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = Status::eloquentQuery($sortBy, $orderBy, $searchValue);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $data = AksesUser::find($id);
+        $data = Status::find($id);
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'
@@ -113,7 +121,7 @@ class AksesUserController extends Controller
             ], 422);
         }
 
-        $data = AksesUser::find($id);
+        $data = Status::find($id);
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'
@@ -145,7 +153,7 @@ class AksesUserController extends Controller
             ], 403);
         }
 
-        $data = AksesUser::find($id);
+        $data = Status::find($id);
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'
@@ -160,7 +168,8 @@ class AksesUserController extends Controller
             ], 204);
         } catch (\Throwable $tr) {
             return Response::json([
-                'error' => 'Entry gagal dihapus'
+                'error' => 'Entry gagal dihapus',
+                'data' => $tr
             ], 304);
         }
     }
