@@ -21,7 +21,7 @@ class Pasien extends Model
         'jeniskelamin',
         'agama',
         'alamat',
-        'idwilayah',
+        'wilayah_id',
         'pendidikan',
         'pekerjaan',
         'nohp',
@@ -59,7 +59,7 @@ class Pasien extends Model
         'alamat' => [
             'searchable' => true,
         ],
-        'idwilayah' => [
+        'wilayah_id' => [
             'searchable' => true,
         ],
         'pendidikan' => [

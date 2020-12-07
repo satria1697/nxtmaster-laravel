@@ -16,7 +16,7 @@ class StatusController extends Controller
         return $basecolumn=[
             'description',
             'warna',
-            'nilai'
+            'nilai',
         ];
     }
 
@@ -24,7 +24,7 @@ class StatusController extends Controller
         $rules = [
             'description' => 'required|min:2',
             'warna' => 'required',
-            'nilai' => 'required|numeric'
+            'nilai' => 'required|numeric',
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {
@@ -141,7 +141,7 @@ class StatusController extends Controller
         } catch(\Throwable $tr) {
             return Response::json([
                 'error' => 'error_update',
-            ],304);
+            ],403);
         }
     }
 

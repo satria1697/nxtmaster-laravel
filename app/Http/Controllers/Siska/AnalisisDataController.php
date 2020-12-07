@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Siska;
 
 use App\Http\Controllers\Controller;
 use App\Models\Siska\AnalisisData;
+use App\Models\Siska\Analisisrawatinap;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -19,6 +20,8 @@ class AnalisisDataController extends Controller
             'idformulir',
             'idformulirdata',
             'value',
+            'dokter_id',
+            'perawat_id',
         ];
     }
 
@@ -61,6 +64,8 @@ class AnalisisDataController extends Controller
             ], 422);
         };
 
+        $nilaianalis = 0;
+        $nilaitotal = 0;
         $checkeddata = json_decode($request->input('checkeddata'), true);
         foreach ($checkeddata as $cd) {
             $cdvalue = $cd['value'];
@@ -71,6 +76,18 @@ class AnalisisDataController extends Controller
                 $data->idformulirdata = $c['id'];
                 $data->nilai = $c['nilai'];
                 $data->value = $c['value'];
+                if ($cd['id'] == 1) {
+                    $data->dokter_id = $request->input('dokter_id');
+                }
+                else if ($cd['id'] == 2) {
+                    $data->perawat_id = $request->input('perawat_id');
+                }
+//                else {
+//                    $data->perawat_id = $request->input('perawat_id');
+//                    $data->dokter_id = $request->input('dokter_id');
+//                }
+                $nilaianalis+=$c['nilai'];
+                $nilaitotal+=2;
 
                 /* inserted and updated */
                 $user = auth()->payload()->get('username');
@@ -89,6 +106,12 @@ class AnalisisDataController extends Controller
                 }
             }
         }
+        $dataAnalisisRanap = Analisisrawatinap::where('nxt_siska_analisisrawatinap.id', '=', $request->input('id'))->first();
+        $dataAnalisisRanap->update([
+            'nilaianalisis' => $nilaianalis,
+            'nilaitotal' => $nilaitotal,
+        ]);
+
         return Response::json([
             'status' => 'success'
         ],200);
@@ -107,19 +130,13 @@ class AnalisisDataController extends Controller
 
     public function show(Request $request, $id)
     {
-//        $data = AnalisisData::find($id);
-//        return $request;
         $formulirjasa = json_decode($request->input('formulirid'), true);
-//        $data = AnalisisData::where('idanalisis', '=', $id)->get();
-//        return $formulirid;
         $data = [];
         foreach ($formulirjasa as $fjasa) {
             $parentobj = new \stdClass();
             $dataA = $dataAnalisis = AnalisisData::where('idanalisis', '=', $id)
                 ->where('idformulir', '=', $fjasa)
                 ->get();
-//            return $dataA;
-//            return $dataA->isEmpty();
             if ($dataA->isEmpty()) {
                 return Response::json([
                     'error' => 'error'
@@ -132,10 +149,9 @@ class AnalisisDataController extends Controller
                 $childobj->id = $dat['idformulirdata'];
                 $childobj->nilai = $dat['nilai'];
                 $childobj->value = $dat['value'];
+
                 array_push($childData, $childobj);
-//                return $dat;
             }
-//            return $dataA;
             $parentobj->value = $childData;
             array_push($data, $parentobj);
         }
@@ -165,16 +181,12 @@ class AnalisisDataController extends Controller
             ], 422);
         }
 
-//        $data = AnalisisData::find($id);
-//        $data = AnalisisData::where('analisisid','=',$id)->first();
-//        if (is_null($data)) {
-//            return Response::json([
-//                'error' => 'Data tidak ditemukan'
-//            ], 403);
-//        }
+//        return $request;
 
         try {
             $checkeddata = json_decode($request->input('checkeddata'), true);
+            $nilaianalis = 0;
+            $nilaitotal = 0;
             foreach ($checkeddata as $cd) {
                 $cdvalue = $cd['value'];
                 foreach ($cdvalue as $c) {
@@ -182,17 +194,23 @@ class AnalisisDataController extends Controller
                         ->where('idformulir', '=', $cd['id'])
                         ->where('idformulirdata', '=', $c['id'])
                         ->first();
-//                    $dataid = $data['id'];
-//                    return $dataid;
                     $data->nilai = $c['nilai'];
                     $data->value = $c['value'];
+                    if ($cd['id'] == 1) {
+                        $data->dokter_id = $request->input('dokter_id');
+                    }
+                    else if ($cd['id'] == 2) {
+                        $data->perawat_id = $request->input('perawat_id');
+                    }
+//                    else {
+//                        $data->perawat_id = $request->input('perawat_id');
+//                        $data->dokter_id = $request->input('dokter_id');
+//                    }
+                    $nilaianalis+=$c['nilai'];
+                    $nilaitotal+=2;
 
                     /* inserted and updated */
-//                    return $data->wasChanged();
-//                    $data->save();
-//                     return $data->isDirty();
                     if ($data->isDirty() > 0) {
-//                        return 'axcsd';
                         $user = auth()->payload()->get('username');
                         $currenttime = Carbon::now();
                         $data->update([
@@ -200,17 +218,21 @@ class AnalisisDataController extends Controller
                             'updatedat' => $currenttime,
                         ]);
                     }
-
                 }
             }
-
+            $dataAnalisisRanap = Analisisrawatinap::where('nxt_siska_analisisrawatinap.id', '=', $request->input('id'))->first();
+            $dataAnalisisRanap->update([
+                'nilaianalisis' => $nilaianalis,
+                'nilaitotal' => $nilaitotal,
+            ]);
             return Response::json([
                 'status' => 'success'
             ], 200);
         } catch(\Throwable $tr) {
             return Response::json([
                 'error' => 'error_update',
-            ],304);
+                'data' => $tr,
+            ],403);
         }
     }
 

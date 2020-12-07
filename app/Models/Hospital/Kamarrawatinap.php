@@ -14,7 +14,7 @@ class Kamarrawatinap extends Model
 
     protected $fillable = [
         'description',
-        'idbangsal',
+        'bangsal_id',
     ];
 
     protected $dataTableColumns = [
@@ -24,8 +24,28 @@ class Kamarrawatinap extends Model
         'description' => [
             'searchable' => true,
         ],
-        'idbangsal' => [
-            'searchable' => true,
+//        'idbangsal' => [
+//            'searchable' => true,
+//        ]
+    ];
+
+    protected $dataTableRelationships = [
+        "belongsTo" => [
+            'bangsal' => [
+                "model" => Bangsal::class,
+                'foreign_key' => 'bangsal_id',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
         ]
     ];
+
+    public function bangsal()
+    {
+        return $this->belongsTo(Bangsal::class, 'bangsal_id', 'id');
+    }
 }

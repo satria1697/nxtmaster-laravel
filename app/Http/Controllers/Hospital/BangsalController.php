@@ -15,7 +15,7 @@ class BangsalController extends Controller
     private function basecolumn() {
         return $basecolumn=[
             'description',
-            'idkelas',
+            'kelas_id',
         ];
     }
 
@@ -84,14 +84,19 @@ class BangsalController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = Bangsal::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = Bangsal::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'kelasranap'
+        ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $data = Bangsal::find($id);
+        $query = Bangsal::eloquentQuery('id', 'asc', '', [
+            'kelasranap'
+        ]);
+        $data = $query->where('nxt_hospital_kelasrawatinap.id', '=', $id)->first();
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'

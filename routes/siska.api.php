@@ -10,6 +10,13 @@ Route::middleware('auth:api')->group(function () {
             Route::post('update/{id}', 'StatusController@update');
             Route::post('register', 'StatusController@store');
         });
+        Route::prefix('statuskelengkapan')->group(function() {
+            Route::get('data', 'StatusKelengkapanController@index');
+            Route::get('{id}', 'StatusKelengkapanController@show');
+            Route::delete('delete/{id}', 'StatusKelengkapanController@delete');
+            Route::post('update/{id}', 'StatusKelengkapanController@update');
+            Route::post('register', 'StatusKelengkapanController@store');
+        });
         Route::prefix('formulir')->group(function() {
             Route::get('data', 'FormulirController@index');
             Route::get('{id}', 'FormulirController@show');
@@ -52,6 +59,14 @@ Route::middleware('auth:api')->group(function () {
             Route::delete('delete/{id}', 'AnalisisDataController@delete');
             Route::post('update/{id}', 'AnalisisDataController@update');
             Route::post('register', 'AnalisisDataController@store');
+        });
+        Route::prefix('laporan')->group(function() {
+            Route::get('data', 'LaporanController@index');
+            Route::get('{id}', 'LaporanController@show');
+            Route::delete('delete/{id}', 'LaporanController@delete');
+            Route::post('update/{id}', 'LaporanController@update');
+            Route::post('register', 'LaporanController@store');
+            Route::get('laporan/data', 'LaporanController@laporan');
         });
     });
 });

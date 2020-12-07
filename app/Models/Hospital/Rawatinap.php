@@ -13,13 +13,14 @@ class Rawatinap extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idpasien',
+        'pasien_id',
+        'norm',
         'tglmasuk',
         'tglkeluar',
-        'idkelas',
-        'idbangsal',
-        'idkamar',
-        'iddokter',
+        'kelas_id',
+        'bangsal_id',
+        'kamar_id',
+        'dokter_id',
         'jeniskasus',
         'tindakan',
         'caramasuk',
@@ -31,25 +32,13 @@ class Rawatinap extends Model
         'id' => [
             'searchable' => false,
         ],
-        'idpasien' => [
+        'norm' => [
             'searchable' => true,
         ],
         'tglmasuk' => [
             'searchable' => true,
         ],
         'tglkeluar' => [
-            'searchable' => true,
-        ],
-        'idkelas' => [
-            'searchable' => true,
-        ],
-        'idbangsal' => [
-            'searchable' => true,
-        ],
-        'idkamar' => [
-            'searchable' => true,
-        ],
-        'iddokter' => [
             'searchable' => true,
         ],
         'jeniskasus' => [
@@ -68,4 +57,84 @@ class Rawatinap extends Model
             'searchable' => true,
         ],
     ];
+
+    protected $dataTableRelationships = [
+        "belongsTo" => [
+            'kelas' => [
+                "model" => Kelasrawatinap::class,
+                'foreign_key' => 'kelas_id',
+                'columns' => [
+                    'description' => [
+                        'description' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'bangsal' => [
+                "model" => Bangsal::class,
+                'foreign_key' => 'bangsal_id',
+                'columns' => [
+                    'description' => [
+                        'description' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'kamar' => [
+                "model" => Kamarrawatinap::class,
+                'foreign_key' => 'kamar_id',
+                'columns' => [
+                    'description' => [
+                        'description' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'dokter' => [
+                "model" => Dokter::class,
+                'foreign_key' => 'dokter_id',
+                'columns' => [
+                    'namadokter' => [
+                        'description' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'pasien' => [
+                "model" => Pasien::class,
+                'foreign_key' => 'pasien_id',
+                'columns' => [
+                    'norm' => [
+                        'description' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+        ]
+    ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelasrawatinap::class, 'kelas_id', 'id');
+    }
+
+    public function bangsal()
+    {
+        return $this->belongsTo(Bangsal::class, 'bangsal_id', 'id');
+    }
+
+    public function kamarranap()
+    {
+        return $this->belongsTo(Kamarrawatinap::class, 'kamar_id', 'id');
+    }
+
+    public function dokter()
+    {
+        return $this->belongsTo(Dokter::class, 'dokter_id', 'id');
+    }
+
+    public function pasien()
+    {
+        return $this->belongsTo(Pasien::class, 'pasien_id', 'id');
+    }
 }

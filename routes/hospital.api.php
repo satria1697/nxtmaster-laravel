@@ -102,5 +102,19 @@ Route::middleware('auth:api')->group(function () {
             Route::post('update/{id}', 'PekerjaanController@update');
             Route::post('register', 'PekerjaanController@store');
         });
+        Route::prefix('jenistenagamedis')->group(function() {
+            Route::get('data', 'JenisTenagaMedisController@index');
+            Route::get('{id}', 'JenisTenagaMedisController@show');
+            Route::delete('delete/{id}', 'JenisTenagaMedisController@delete');
+            Route::post('update/{id}', 'JenisTenagaMedisController@update');
+            Route::post('register', 'JenisTenagaMedisController@store');
+        });
+        Route::prefix('tenagamedis')->group(function() {
+            Route::get('data', 'TenagaMedisController@index');
+            Route::get('{id}', 'TenagaMedisController@show');
+            Route::delete('delete/{id}', 'TenagaMedisController@delete');
+            Route::post('update/{id}', 'TenagaMedisController@update');
+            Route::post('register', 'TenagaMedisController@store');
+        });
     });
 });

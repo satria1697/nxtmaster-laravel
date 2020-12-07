@@ -22,7 +22,7 @@ class PasienController extends Controller
             'jeniskelamin',
             'agama',
             'alamat',
-            'idwilayah',
+            'wilayah_id',
             'pendidikan',
             'pekerjaan',
             'nohp',

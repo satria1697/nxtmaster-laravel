@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\AksesUser;
 use App\Models\Siska\AnalisisFormulir;
 use App\Models\Siska\Formulir;
+use App\Models\Siska\FormulirData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -18,12 +19,14 @@ class FormulirController extends Controller
     private function basecolumn() {
         return $basecolumn=[
             'description',
+            'required',
         ];
     }
 
     private function validation($data) {
         $rules = [
             'description' => 'required',
+            'required' => 'required',
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {
@@ -184,6 +187,7 @@ class FormulirController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
+//        return $request;
         $formulirid = json_decode($request->input('formulirid'), true);
         $data = [];
         foreach ($formulirid as $fid) {
@@ -191,6 +195,12 @@ class FormulirController extends Controller
                 'formulirdata'
             ]);
             array_push($data, $query->where('nxt_siska_formulir.id', '=', $fid)->first());
+//            $obj = (object)
+//            $dataFd = FormulirData::eloquentQuery($sortBy, $orderBy, $searchValue)
+//                ->where('formulirid', '=', $fid)
+//                ->get();
+//            $dataF = Formulir::where('id', '=', $fid)->first();
+//            array_push($data, $dataFd);
         }
         return Response::json([
             'status' => 'success',

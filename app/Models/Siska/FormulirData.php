@@ -14,7 +14,8 @@ class FormulirData extends Model
 
     protected $fillable = [
         'description',
-        'formulirid'
+        'formulirid',
+        'keyid'
     ];
 
     protected $dataTableColumns = [
@@ -24,8 +25,32 @@ class FormulirData extends Model
         'description' => [
             'searchable' => true,
         ],
-        'formulirid' => [
-            'searchable' => true,
+//        'formulirid' => [
+//            'searchable' => true,
+//        ],
+        'keyid' => [
+            'searchable' => false,
         ],
     ];
+
+    protected $dataTableRelationships = [
+        "belongsTo" => [
+            'formulir' => [
+                "model" => \App\Models\Siska\Formulir::class,
+                'foreign_key' => 'formulirid',
+//                'orderby' => 'keyid',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+        ]
+    ];
+
+    public function formulir()
+    {
+        return $this->belongsTo(\App\Models\Siska\Formulir::class, 'formulirid', 'id');
+    }
 }

@@ -15,7 +15,7 @@ class Status extends Model
     protected $fillable = [
         'description',
         'warna',
-        'nilai'
+        'nilai',
     ];
 
     protected $dataTableColumns = [

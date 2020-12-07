@@ -16,6 +16,7 @@ class FormulirDataController extends Controller
         return $basecolumn=[
             'description',
             'formulirid',
+            'keyid'
         ];
     }
 
@@ -85,7 +86,9 @@ class FormulirDataController extends Controller
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
         $formulirid = $request->input('formulirid');
-        $query = FormulirData::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = FormulirData::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'formulir'
+        ]);
 //        $query = $query->where('formulirid', '=', $formulirid);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
@@ -93,7 +96,11 @@ class FormulirDataController extends Controller
 
     public function show($id)
     {
-        $data = FormulirData::find($id);
+//        $data = FormulirData::find($id);
+        $query = FormulirData::eloquentQuery('id', 'asc', '', [
+            'formulir'
+        ]);
+        $data = $query->where('nxt_siska_formulirdata.id', '=', $id)->first();
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'
@@ -140,7 +147,8 @@ class FormulirDataController extends Controller
         } catch(\Throwable $tr) {
             return Response::json([
                 'error' => 'error_update',
-            ],304);
+                'data' => $tr,
+            ],403);
         }
     }
 

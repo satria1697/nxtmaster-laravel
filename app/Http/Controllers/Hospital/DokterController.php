@@ -14,9 +14,10 @@ class DokterController extends Controller
     /* base */
     private function basecolumn() {
         return $basecolumn=[
-            'namadokter',
+            'nama',
             'nohp',
-            'idspesialisasi'
+            'jenistm',
+            'spesialisasi_id'
         ];
     }
 
@@ -86,14 +87,19 @@ class DokterController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = Dokter::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = Dokter::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'spesialisasi'
+        ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $data = Dokter::find($id);
+        $query = Dokter::eloquentQuery('id', 'asc', '', [
+            'spesialisasi'
+        ]);
+        $data = $query->where('nxt_hospital_dokter.id', '=', $id)->first();
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'

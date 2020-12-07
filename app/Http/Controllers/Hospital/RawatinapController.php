@@ -15,6 +15,7 @@ class RawatinapController extends Controller
     private function basecolumn() {
         return $basecolumn=[
             'idpasien',
+            'norm',
             'tglmasuk',
             'tglkeluar',
             'idkelas',
@@ -31,15 +32,16 @@ class RawatinapController extends Controller
 
     private function validation($data) {
         $rules = [
-            'idpasien' => 'required',
+            'idpasien' => 'required|numeric',
+            'norm' => 'required',
             'tglmasuk' => 'required',
-            'idkelas' => 'required',
-            'idbangsal' => 'required',
-            'idkamar' => 'required',
-            'iddokter' => 'required',
-            'caramasuk' => 'required',
-            'ketpulang' => 'required',
-            'carabayar' => 'required',
+            'idkelas' => 'required|numeric',
+            'idbangsal' => 'required|numeric',
+            'idkamar' => 'required|numeric',
+            'iddokter' => 'required|numeric',
+            'caramasuk' => 'required|numeric',
+            'ketpulang' => 'required|numeric',
+            'carabayar' => 'required|numeric',
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {
@@ -102,14 +104,27 @@ class RawatinapController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = Rawatinap::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = Rawatinap::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'kelas',
+            'bangsal',
+            'kamarranap',
+            'dokter',
+            'pasien',
+        ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $data = Rawatinap::find($id);
+        $query = Rawatinap::eloquentQuery('id', 'asc', '', [
+            'kelas',
+            'bangsal',
+            'kamarranap',
+            'dokter',
+            'pasien',
+        ]);
+        $data = $query->where('nxt_hospital_rawatinap.id', '=', $id)->first();
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'

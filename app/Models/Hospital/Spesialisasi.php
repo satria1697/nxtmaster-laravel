@@ -13,14 +13,14 @@ class Spesialisasi extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'spesialisasi'
+        'description'
     ];
 
     protected $dataTableColumns = [
         'id' => [
             'searchable' => false,
         ],
-        'spesialisasi' => [
+        'description' => [
             'searchable' => true,
         ]
     ];

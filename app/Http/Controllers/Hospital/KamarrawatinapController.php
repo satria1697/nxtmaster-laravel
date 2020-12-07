@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Hospital;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hospital\Bangsal;
 use App\Models\Hospital\Kamarrawatinap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -15,7 +16,7 @@ class KamarrawatinapController extends Controller
     private function basecolumn() {
         return $basecolumn=[
             'description',
-            'idbangsal',
+            'bangsal_id',
         ];
     }
 
@@ -84,14 +85,19 @@ class KamarrawatinapController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = Kamarrawatinap::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = Kamarrawatinap::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'bangsal'
+        ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $data = Kamarrawatinap::find($id);
+        $query = Kamarrawatinap::eloquentQuery('id', 'asc', '', [
+            'bangsal'
+        ]);
+        $data = $query->where('nxt_hospital_bangsal.id', '=', $id)->first();
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'

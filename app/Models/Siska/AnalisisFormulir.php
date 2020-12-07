@@ -35,7 +35,7 @@ class AnalisisFormulir extends Model
                 "model" => \App\Models\Siska\Formulir::class,
                 'foreign_key' => 'formulirid',
                 'columns' => [
-                    'description' => [
+                    'keyid' => [
                         'searchable' => true,
                         'orderable' => true,
                     ],
@@ -44,7 +44,7 @@ class AnalisisFormulir extends Model
         ]
     ];
 
-    public function level()
+    public function formulir()
     {
         return $this->belongsTo(\App\Models\Siska\Formulir::class, 'formulirid', 'id');
     }

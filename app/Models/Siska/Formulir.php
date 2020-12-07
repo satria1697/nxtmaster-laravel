@@ -14,6 +14,7 @@ class Formulir extends Model
 
     protected $fillable = [
         'description',
+        'required',
     ];
 
     protected $dataTableColumns = [
@@ -23,6 +24,9 @@ class Formulir extends Model
         'description' => [
             'searchable' => true,
         ],
+        'required' => [
+            'searchable' => false,
+        ]
     ];
 
     protected $dataTableRelationships = [
@@ -30,8 +34,10 @@ class Formulir extends Model
             'formulirdata' => [
                 "model" => \App\Models\Siska\FormulirData::class,
                 'foreign_key' => 'formulirid',
+                'order_by' => 'keyid',
                 'columns' => [
-                    'description' => [
+//                    'orderby' => 'keyid',
+                    'keyid' => [
                         'searchable' => true,
                         'orderable' => true,
                     ],
@@ -40,7 +46,7 @@ class Formulir extends Model
         ],
     ];
 
-    public function formulirData()
+    public function formulirdata()
     {
         return $this->hasMany(\App\Models\Siska\FormulirData::class, 'formulirid', 'id');
     }

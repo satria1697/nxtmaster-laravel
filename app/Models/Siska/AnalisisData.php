@@ -17,10 +17,12 @@ class AnalisisData extends Model
         'idformulir',
         'idformulirdata',
         'value',
+        'jenis_id',
+        'tm_id',
         'insertedat',
         'insertedby',
         'updatedat',
-        'updatedby'
+        'updatedby',
     ];
 
     protected $dataTableColumns = [
@@ -40,6 +42,12 @@ class AnalisisData extends Model
             'searchable' => true,
         ],
         'value' => [
+            'searchable' => false,
+        ],
+        'jenis_id' => [
+            'searchable' => false,
+        ],
+        'tm_id' => [
             'searchable' => false,
         ],
     ];

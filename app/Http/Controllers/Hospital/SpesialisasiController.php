@@ -14,13 +14,13 @@ class SpesialisasiController extends Controller
     /* base */
     private function basecolumn() {
         return $basecolumn=[
-            'spesialisasi',
+            'description',
         ];
     }
 
     private function validation($data) {
         $rules = [
-            'spesialisasi' => 'required|min:3',
+            'description' => 'required|min:3',
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {

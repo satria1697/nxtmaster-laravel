@@ -2,61 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/AgamaController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/BangsalController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/DiagnosisrawatinapController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/DokterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/IcdController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/KamarrawatinapController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/KelasrawatinapController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/OperasiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PasienController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PekerjaanController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PendidikanController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PerawatController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/SpesialisasiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/WilayahController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisFormulirController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisoperasiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/StatusController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Agama.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Bangsal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Diagnosisrawatinap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Dokter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Icd.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Kamarrawatinap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Kelasrawatinap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Operasi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Pasien.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Pekerjaan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Pendidikan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Perawat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Spesialisasi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Wilayah.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/AnalisisData.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/AnalisisFormulir.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisoperasi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/FormulirData.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Siska/Status.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/hospital.api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/siska.api.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/JenisTenagaMedisController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/TenagaMedisController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/StatusKelengkapanController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/JenisTenagaMedis.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/TenagaMedis.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Siska/Laporan.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Siska/StatusKelengkapan.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/dompdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/laporankelengkapan.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nxtoffice4_backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nxtoffice4_backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AksesManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AksesManagerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AksesUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AksesUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/BangsalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/BangsalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/DokterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/DokterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/KamarrawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/KamarrawatinapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PasienController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PasienController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/SpesialisasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/SpesialisasiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/StatusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/StatusController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Bangsal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Bangsal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Dokter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Dokter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Kamarrawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Kamarrawatinap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Pasien.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Pasien.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Spesialisasi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Spesialisasi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/AnalisisData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/AnalisisData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/AnalisisFormulir.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/AnalisisFormulir.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/FormulirData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/FormulirData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Status.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/hospital.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/hospital.api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/siska.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/siska.api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,6 +177,11 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/jamesdordoy/laravelvuedatatable" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jlqqFTfiCo3karDGrzpq72r9Bn" />
@@ -205,7 +198,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/storage/app" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/elibrary.local/elibrary.local" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -293,7 +286,12 @@
       <workItem from="1606915845354" duration="1001000" />
       <workItem from="1606949979786" duration="1179000" />
       <workItem from="1606960701667" duration="15798000" />
-      <workItem from="1606994843080" duration="11850000" />
+      <workItem from="1606994843080" duration="16861000" />
+      <workItem from="1607060402149" duration="102000" />
+      <workItem from="1607094562575" duration="14538000" />
+      <workItem from="1607133739300" duration="19598000" />
+      <workItem from="1607169473196" duration="49796000" />
+      <workItem from="1607304010938" duration="469000" />
     </task>
     <servers />
   </component>
@@ -324,19 +322,19 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606902458033" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606997268759">
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607304085541">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606975768222" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1606997268759" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1607304085541" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1606720778032">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606720778032" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1604721391025">
+    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1607138451295">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604721391025" />
+    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607138451295" />
     <state x="1829" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1366.738@1366.0.1366.738" timestamp="1604455295860" />
     <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1604455423088">
       <screen x="1366" y="0" width="1366" height="738" />
@@ -363,14 +361,19 @@
     </state>
     <state x="516" y="288" key="NewPhpFileDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604888121565" />
     <state x="516" y="288" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1606865986629" />
-    <state x="173" y="10" key="SettingsEditor" timestamp="1606789609489">
+    <state x="173" y="10" key="SettingsEditor" timestamp="1607217664900">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="173" y="10" key="SettingsEditor/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606789609489" />
+    <state x="173" y="10" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1607217664900" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1604891952748">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604891952748" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1607007732362">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1607007732362" />
     <state x="1366" y="0" width="948" height="726" key="dock-window-1" timestamp="1606363091742">
       <screen x="1366" y="0" width="1366" height="738" />
     </state>

@@ -19,10 +19,10 @@ class AnalisisrawatinapController extends Controller
         return $basecolumn=[
             'idranap',
             'tglinput',
-            'iddokter',
-            'idperawat',
+            'dokter_id',
+            'perawat_id',
 //            'idformulir',
-            'idstatus',
+//            'idstatus',
             'jatuhtempo',
             'tgllengkap',
         ];}
@@ -31,10 +31,10 @@ class AnalisisrawatinapController extends Controller
         $rules = [
             'idranap' => 'required',
             'tglinput' => 'required',
-            'iddokter' => 'required',
-            'idperawat' => 'required',
+            'dokter_id' => 'required',
+            'perawat_id' => 'required',
 //            'idformulir' => 'required',
-            'idstatus' => 'required',
+//            'idstatus' => 'required',
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {
@@ -111,7 +111,10 @@ class AnalisisrawatinapController extends Controller
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
         $query = Analisisrawatinap::eloquentQuery($sortBy, $orderBy, $searchValue, [
-            "formulir"
+            "formulir",
+            'perawat',
+            'dokter',
+            'ranap',
         ]);
 
         $data = $query->paginate($length);
@@ -122,7 +125,10 @@ class AnalisisrawatinapController extends Controller
     {
 //        $data = Analisisrawatinap::find($id);
         $query = Analisisrawatinap::eloquentQuery('id', 'asc', '', [
-            "formulir"
+            "formulir",
+            'perawat',
+            'dokter',
+            'ranap'
         ]);
 
         $data = $query->where('nxt_siska_analisisrawatinap.id', '=', $id)->first();

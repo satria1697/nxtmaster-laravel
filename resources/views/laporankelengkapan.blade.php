@@ -53,15 +53,23 @@
     <table class="table table-sm table-striped">
         <thead>
         <tr>
-            <th>Dokter</th>
-            <th>Perawat</th>
+            <th>Bulan</th>
+            <th>Persentase Dokter</th>
+            <th>Persentase Perawat</th>
+            <th>Jumlah RM Dokter</th>
+            <th>Jumlah RM Perawat</th>
+            <th>Jumlah Data</th>
         </tr>
         </thead>
         <tbody>
-        @for ($i = 0; $i < 2; $i++)
+        @for ($i = 0; $i < count($bulan); $i++)
         <tr>
-            @for($j = 0; $j < count($bulan); $j++)
+            <td>{{$bulan[$i]}}</td>
+            @for($j = 0; $j < 2; $j++)
             <td>{{$data[$i][$j]}}%</td>
+            @endfor
+            @for($j = 2; $j < 5; $j++)
+                <td>{{$data[$i][$j]}}</td>
             @endfor
         </tr>
         @endfor
