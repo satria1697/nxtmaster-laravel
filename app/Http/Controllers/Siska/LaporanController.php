@@ -641,6 +641,7 @@ class LaporanController extends Controller
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('laporankelengkapan', $dataPDF);
         $pdf->setPaper('A4', 'landscape');
+//        return $pdf->download("analisis.pdf");
         $pdffix = $pdf->output();
         $pdffix = base64_encode($pdffix);
         return Response::json([

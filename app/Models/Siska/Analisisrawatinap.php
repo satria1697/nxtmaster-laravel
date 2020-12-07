@@ -48,9 +48,9 @@ class Analisisrawatinap extends Model
         'idformulir' => [
             'searchable' => true,
         ],
-//        'idstatus' => [
-//            'searchable' => true,
-//        ],
+        'idstatus' => [
+            'searchable' => true,
+        ],
         'jatuhtempo' => [
             'searchable' => true,
         ],
@@ -67,16 +67,16 @@ class Analisisrawatinap extends Model
 
     protected  $dataTableRelationships = [
         "belongsTo" => [
-            'dokter' => [
-                "model" => TenagaMedis::class,
-                'foreign_key' => 'dokter_id',
-                'columns' => [
-                    'namadokter' => [
-                        'searchable' => true,
-                        'orderable' => true,
-                    ],
-                ],
-            ],
+//            'dokter' => [
+//                "model" => TenagaMedis::class,
+//                'foreign_key' => 'dokter_id',
+//                'columns' => [
+//                    'namadokter' => [
+//                        'searchable' => true,
+//                        'orderable' => true,
+//                    ],
+//                ],
+//            ],
 //            'perawat' => [
 //                "model" => TenagaMedis::class,
 //                'foreign_key' => 'perawat_id',
@@ -125,12 +125,12 @@ class Analisisrawatinap extends Model
 
     public function dokter()
     {
-        return $this->belongsTo(TenagaMedis::class, 'dokter_id', 'id');
+        return $this->belongsTo(TenagaMedis::class, 'jenis_id', 'id');
     }
 
     public function perawat()
     {
-        return $this->belongsTo(TenagaMedis::class, 'perawat_id', 'id');
+        return $this->belongsTo(TenagaMedis::class, 'jenis_id', 'id');
     }
 
     public function ranap()

@@ -22,7 +22,7 @@ class AnalisisrawatinapController extends Controller
             'dokter_id',
             'perawat_id',
 //            'idformulir',
-//            'idstatus',
+            'idstatus',
             'jatuhtempo',
             'tgllengkap',
         ];}
@@ -34,7 +34,7 @@ class AnalisisrawatinapController extends Controller
             'dokter_id' => 'required',
             'perawat_id' => 'required',
 //            'idformulir' => 'required',
-//            'idstatus' => 'required',
+            'idstatus' => 'required',
         ];
         $v = Validator::make($data, $rules);
         if ($v->fails()) {
