@@ -167,7 +167,13 @@ class LaporanController extends Controller
         }
 
         if ($terhadap == 2) {
-            $dokters = TenagaMedis::where('jenis_id', '=', 1)->get();
+            if ($pengambilandata == 0) {
+                $dokters = TenagaMedis::where('jenis_id', '=', 1)->get();
+            } else {
+                $dokters = TenagaMedis::where('jenis_id', '=', 1)
+                    ->where('id', '=', $request->input('dokter_id'))
+                    ->get();
+            }
             foreach ($dataBulan as $tiapBulan) {
                 $totalNilai = 0;
                 if (count($tiapBulan) !== 0) {
@@ -198,7 +204,13 @@ class LaporanController extends Controller
         }
 
         if ($terhadap == 3) {
-            $perawats = TenagaMedis::where('jenis_id', '=', 2)->get();
+            if ($pengambilandata == 1) {
+                $perawats = TenagaMedis::where('jenis_id', '=', 2)->get();
+            } else {
+                $perawats = TenagaMedis::where('jenis_id', '=', 2)
+                    ->where('id', '=', $request->input('perawat_id'))
+                    ->get();
+            }
             foreach ($dataBulan as $tiapBulan) {
                 $totalNilai = 0;
                 if (count($tiapBulan) !== 0) {

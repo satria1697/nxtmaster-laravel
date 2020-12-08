@@ -89,6 +89,7 @@ class FormulirDataController extends Controller
         $query = FormulirData::eloquentQuery($sortBy, $orderBy, $searchValue, [
             'formulir'
         ]);
+        $query = $query->orderBy('keyid', 'asc');
 //        $query = $query->where('formulirid', '=', $formulirid);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);

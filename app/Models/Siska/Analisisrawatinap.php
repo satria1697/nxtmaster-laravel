@@ -39,9 +39,9 @@ class Analisisrawatinap extends Model
         'tglinput' => [
             'searchable' => true,
         ],
-//        'iddokter' => [
-//            'searchable' => true,
-//        ],
+        'dokter_id' => [
+            'searchable' => true,
+        ],
         'perawat_id' => [
             'searchable' => true,
         ],

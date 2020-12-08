@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="fixing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +30,11 @@
     <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/app/Models/Admin/Akses.php" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Andhika Satria Bagaskoro &lt;39475953+satria1697@users.noreply.github.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -259,15 +273,38 @@
       <workItem from="1607323840011" duration="65000" />
       <workItem from="1607324098172" duration="7000" />
       <workItem from="1607325508251" duration="188000" />
-      <workItem from="1607325762301" duration="332000" />
+      <workItem from="1607325762301" duration="1244000" />
+      <workItem from="1607392309593" duration="4855000" />
     </task>
+    <task id="LOCAL-00001" summary="fixing">
+      <created>1607326189031</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607326189031</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="27" key="#Composer" timestamp="1604389724431">
@@ -296,6 +333,10 @@
     </state>
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606975768222" />
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1607304085541" />
+    <state x="306" y="0" key="CommitChangelistDialog2" timestamp="1607326231100">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="306" y="0" key="CommitChangelistDialog2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607326231100" />
     <state x="459" y="281" width="447" height="265" key="ComposerInitDialogKey" timestamp="1607325825871">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -343,10 +384,15 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604891952748" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1607007732362">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1607326297955">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607326297955" />
     <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1607007732362" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607326239520">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607326239520" />
     <state x="1366" y="0" width="948" height="726" key="dock-window-1" timestamp="1606363091742">
       <screen x="1366" y="0" width="1366" height="738" />
     </state>

@@ -34,7 +34,6 @@ class Formulir extends Model
             'formulirdata' => [
                 "model" => \App\Models\Siska\FormulirData::class,
                 'foreign_key' => 'formulirid',
-                'order_by' => 'keyid',
                 'columns' => [
 //                    'orderby' => 'keyid',
                     'keyid' => [
@@ -48,6 +47,6 @@ class Formulir extends Model
 
     public function formulirdata()
     {
-        return $this->hasMany(\App\Models\Siska\FormulirData::class, 'formulirid', 'id');
+        return $this->hasMany(\App\Models\Siska\FormulirData::class, 'formulirid', 'id')->orderBy('keyid');
     }
 }
