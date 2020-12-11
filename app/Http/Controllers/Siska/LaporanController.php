@@ -9,6 +9,7 @@ use App\Models\Siska\AnalisisFormulir;
 use App\Models\Siska\Analisisrawatinap;
 use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
+use Chartisan\PHP\Chartisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Response;
@@ -113,9 +114,9 @@ class LaporanController extends Controller
         $bulan = array();
         for ($x = 0; $x < $diffinmonth; $x++) {
             if ($x == 0) {
-                $bulanmulai = Carbon::parse($tglawal)->format('Y-m-d');
+                $bulanmulai = Carbon::parse($tglawal)->startOfDay()->format('Y-m-d');
             } else {
-                $bulanmulai = Carbon::parse($bulan[$x-1]->bulanawal)->addMonth()->format('Y-m-d');
+                $bulanmulai = Carbon::parse($bulan[$x-1]->bulanawal)->addMonth()->startOfDay()->format('Y-m-d');
             }
             $bulanakhir = Carbon::parse($bulanmulai)->endOfMonth()->endOfDay()->format('Y-m-d');
             $obj = new \stdClass();
@@ -140,7 +141,8 @@ class LaporanController extends Controller
 
             $getBulan = $query
                 ->where('tglinput', '>=', $bulanawal)
-                ->where('tgllengkap', '<', $bulanakhir)
+                ->where('tglinput', '<', $bulanakhir)
+                ->whereNotNull('tgllengkap')
                 ->get();
             array_push($dataBulan, $getBulan);
         }
@@ -356,25 +358,39 @@ class LaporanController extends Controller
 
         /* Pembuatan PDF */
         $dataPDF = [
-            'persentase' => $persentaseArrayTotal,
+            'data' => $persentaseArrayTotal,
             'who' => $who,
             'whodata' => $whodata,
             'tglawal' => $tglawal->translatedFormat('d F Y'),
             'tglakhir' => $tglakhir->subMonth()->endOfMonth()->translatedFormat('d F Y'),
             'bulan' => $bulantext,
             'terhadap' => $terhadaptext,
+            'filename' => 'analisis'.$who.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
         ];
-        $who = preg_replace('/\s+/', '', $who);
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('pdf', $dataPDF);
-        $pdf->setPaper('A4', 'landscape');
-        $pdffix = $pdf->output();
-        $pdffix = base64_encode($pdffix);
         return Response::json([
             'status' => 'success',
-            'data' => $pdffix,
-            'filename' => 'analisis'.$who.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
+            'data' => $dataPDF,
         ], 200);
+//        $dataPDF = [
+//            'persentase' => $persentaseArrayTotal,
+//            'who' => $who,
+//            'whodata' => $whodata,
+//            'tglawal' => $tglawal->translatedFormat('d F Y'),
+//            'tglakhir' => $tglakhir->subMonth()->endOfMonth()->translatedFormat('d F Y'),
+//            'bulan' => $bulantext,
+//            'terhadap' => $terhadaptext,
+//        ];
+//        $who = preg_replace('/\s+/', '', $who);
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('pdf', $dataPDF);
+//        $pdf->setPaper('A4', 'landscape');
+//        $pdffix = $pdf->output();
+//        $pdffix = base64_encode($pdffix);
+//        return Response::json([
+//            'status' => 'success',
+//            'data' => $pdffix,
+//            'filename' => 'analisis'.$who.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
+//        ], 200);
     }
 
     public function show($id)
@@ -506,9 +522,9 @@ class LaporanController extends Controller
         $bulan = array();
         for ($x = 0; $x < $diffinmonth; $x++) {
             if ($x == 0) {
-                $bulanmulai = Carbon::parse($tglawal)->format('Y-m-d');
+                $bulanmulai = Carbon::parse($tglawal)->startOfDay()->format('Y-m-d');
             } else {
-                $bulanmulai = Carbon::parse($bulan[$x-1]->bulanawal)->addMonth()->format('Y-m-d');
+                $bulanmulai = Carbon::parse($bulan[$x-1]->bulanawal)->addMonth()->startOfDay()->format('Y-m-d');
             }
             $bulanakhir = Carbon::parse($bulanmulai)->endOfMonth()->endOfDay()->format('Y-m-d');
             $obj = new \stdClass();
@@ -531,7 +547,8 @@ class LaporanController extends Controller
 
             $getBulan = $query
                 ->where('tglinput', '>=', $bulanawal)
-                ->where('tgllengkap', '<', $bulanakhir)
+                ->where('tglinput', '<', $bulanakhir)
+                ->whereNotNull('tgllengkap')
                 ->get();
             array_push($dataBulan, $getBulan);
         }
@@ -614,6 +631,8 @@ class LaporanController extends Controller
 //        return $dataTotalArrayDokter;
         $datalengkap = array();
         $datatidaklengkap = array();
+        $datalengkaptabel = array();
+        $datatidaklengkaptabel = array();
         for ($x = 0; $x < $diffinmonth; $x++) {
             $nilailengkapdokter = $dataTotalArrayDokter[$x][0];
             $nilaitidaklengkapdokter = $dataTotalArrayDokter[$x][1];
@@ -631,35 +650,209 @@ class LaporanController extends Controller
             $persentaselengkapperawatbulan = ($nilaitotalbulan) ? (float) round($nilailengkapperawat / $nilaitotalbulan * 100, 2) : round(0, 2);
             $persentasetidaklengkapperawatbulan = ($nilaitotalbulan) ? (float)round($nilaitidaklengkapperawat / $nilaitotalbulan * 100, 2) : round(0, 2);
 
-            array_push($datalengkap, array($persentaselengkapdokterbulan, $persentaselengkapperawatbulan, $nilailengkapdokter, $nilailengkapperawat, $nilaitotalbulan));
-            array_push($datatidaklengkap, array($persentasetidaklengkapdokterbulan, $persentasetidaklengkapperawatbulan, $nilaitidaklengkapdokter, $nilaitidaklengkapperawat, $nilaitotalbulan));
+            array_push($datalengkap, array($persentaselengkapdokterbulan, $persentaselengkapperawatbulan));
+            array_push($datatidaklengkap, array($persentasetidaklengkapdokterbulan, $persentasetidaklengkapperawatbulan));
+            array_push($datalengkaptabel, array($persentaselengkapdokterbulan, $persentaselengkapperawatbulan, $nilailengkapdokter, $nilailengkapperawat, $nilaitotalbulan));
+            array_push($datatidaklengkaptabel, array($persentasetidaklengkapdokterbulan, $persentasetidaklengkapperawatbulan, $nilaitidaklengkapdokter, $nilaitidaklengkapperawat, $nilaitotalbulan));
         }
 
         if ($request->input('kelengkapan') == 1) {
             $data = $datalengkap;
+            $datatabel = $datalengkaptabel;
             $text = "Kelengkapan Dokter dan Perawat";
         } else {
             $data = $datatidaklengkap;
+            $datatabel = $datatidaklengkaptabel;
             $text = "Ketidaklengkapan Dokter dan Perawat";
         }
 
         $dataPDF = [
             'data' => $data,
+            'datatabel' => $datatabel,
             'text' => $text,
             'tglawal' => $tglawal->translatedFormat('d F Y'),
             'tglakhir' => $tglakhir->subMonth()->endOfMonth()->translatedFormat('d F Y'),
             'bulan' => $bulantext,
+            'filename' => 'analisiskelengkapan'.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
         ];
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('laporankelengkapan', $dataPDF);
-        $pdf->setPaper('A4', 'landscape');
-//        return $pdf->download("analisis.pdf");
-        $pdffix = $pdf->output();
-        $pdffix = base64_encode($pdffix);
         return Response::json([
             'status' => 'success',
-            'data' => $pdffix,
-            'filename' => 'analisis'.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
+            'data' => $dataPDF,
         ], 200);
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('laporankelengkapan', $dataPDF);
+//        $pdf->setPaper('A4', 'landscape');
+////        return $pdf->download("analisis.pdf");
+//        $pdffix = $pdf->output();
+//        $pdffix = base64_encode($pdffix);
+//        return Response::json([
+//            'status' => 'success',
+//            'data' => $pdffix,
+//            'filename' => 'analisiskelengkapan'.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
+//        ], 200);
+    }
+
+    public function laporanMutu(Request $request) {
+        $sortBy = $request->input('column');
+        $orderBy = $request->input('dir');
+        $searchValue = $request->input('search');
+
+        $tglawal = $request->input('tglawal');
+        $tglawal = Carbon::parse($tglawal);
+        $tglakhir = $request->input('tglakhir');
+        $tglakhir = Carbon::parse($tglakhir)->addMonthNoOverflow();
+        $diffindays = $tglakhir->diffInDays($tglawal);
+
+        $diffinmonth =  round($diffindays/30);
+
+        $bulantext = array();
+        $bulan = array();
+        for ($x = 0; $x < $diffinmonth; $x++) {
+            if ($x == 0) {
+                $bulanmulai = Carbon::parse($tglawal)->startOfDay()->format('Y-m-d');
+            } else {
+                $bulanmulai = Carbon::parse($bulan[$x-1]->bulanawal)->addMonth()->startOfDay()->format('Y-m-d');
+            }
+            $bulanakhir = Carbon::parse($bulanmulai)->endOfMonth()->endOfDay()->format('Y-m-d');
+            $obj = new \stdClass();
+            $obj->bulanawal = $bulanmulai;
+            $obj->bulanakhir = $bulanakhir;
+            array_push($bulantext, Carbon::parse($bulanmulai)->translatedFormat('F Y'));
+            $bulan[$x] = $obj;
+        }
+
+        $dataBulan = array();
+        for ($x = 0; $x < $diffinmonth; $x++) {
+            $query = Analisisrawatinap::eloquentQuery($sortBy, $orderBy, $searchValue, [
+                "formulir",
+                'perawat',
+                'dokter',
+                'ranap',
+            ]);
+            $bulanawal = Carbon::parse($bulan[$x]->bulanawal);
+            $bulanakhir = Carbon::parse($bulan[$x]->bulanakhir)->addDay();
+
+            $getBulan = $query
+                ->where('tglinput', '>=', $bulanawal)
+                ->where('tglinput', '<', $bulanakhir)
+                ->whereNotNull('tgllengkap')
+                ->get();
+            array_push($dataBulan, $getBulan);
+        }
+
+        $dataTotalArray = array();
+        foreach ($dataBulan as $tiapBulan) {
+            if (count($tiapBulan) !== 0) {
+                $totaldokter = 0;
+                $totalperawat = 0;
+                $totaltidakdokter = 0;
+                $totaltidakperawat = 0;
+                $totalnilaidokter = 0;
+                $totalnilaiperawat = 0;
+                foreach ($tiapBulan as $bulan) {
+                    if (!empty($bulan)) {
+                        if ($bulan['idstatus'] == 1 || $bulan['idstatus'] == 2) {
+                            $formulirs = $bulan['formulir'];
+                            foreach ($formulirs as $formulir) {
+                                $formulirid = $formulir['pivot']['formulirid'];
+                                if ($formulirid == 1) {
+                                    $totaldokter+=1;
+                                    $totalnilaidokter+=1;
+                                }
+                                if ($formulirid == 2) {
+                                    $totalperawat+=1;
+                                    $totalnilaiperawat+=1;
+                                }
+                            }
+                        } else if ($bulan['idstatus'] == 3 || $bulan['idstatus'] == 4) {
+                            $formulirs = $bulan['formulir'];
+                            foreach ($formulirs as $formulir) {
+                                $formulirid = $formulir['pivot']['formulirid'];
+                                if ($formulirid == 1) {
+                                    $totaltidakdokter+=1;
+                                    $totalnilaidokter+=1;
+                                }
+                                if ($formulirid == 2) {
+                                    $totaltidakperawat+=1;
+                                    $totalnilaiperawat+=1;
+                                }
+                            }
+                        }
+                    }
+                }
+                array_push($dataTotalArray, array($totaldokter, $totaltidakdokter, $totalnilaidokter, $totalperawat, $totaltidakperawat, $totalnilaiperawat));
+            } else {
+                array_push($dataTotalArray, array(0,0,0,0,0,0));
+            }
+        }
+
+        $datalengkap = array();
+        $datatidaklengkap = array();
+        $datalengkaptabel = array();
+        $datatidaklengkaptabel = array();
+        for ($x = 0; $x < $diffinmonth; $x++) {
+            $nilailengkapdokter = $dataTotalArray[$x][0];
+            $nilaitidaklengkapdokter = $dataTotalArray[$x][1];
+            $nilaitotaldokter = $dataTotalArray[$x][2];
+
+            $nilailengkapperawat = $dataTotalArray[$x][3];
+            $nilaitidaklengkapperawat = $dataTotalArray[$x][4];
+            $nilaitotalperawat = $dataTotalArray[$x][5];
+
+            $persentaselengkapdokterbulan = ($nilaitotaldokter) ? (float)round($nilailengkapdokter / $nilaitotaldokter * 100, 2) : round(0, 2);
+            $persentasetidaklengkapdokterbulan = ($nilaitotaldokter) ? (float)round($nilaitidaklengkapdokter / $nilaitotaldokter * 100, 2) : round(0, 2);
+
+            $persentaselengkapperawatbulan = ($nilaitotalperawat) ? (float) round($nilailengkapperawat / $nilaitotalperawat * 100, 2) : round(0, 2);
+            $persentasetidaklengkapperawatbulan = ($nilaitotalperawat) ? (float)round($nilaitidaklengkapperawat / $nilaitotalperawat * 100, 2) : round(0, 2);
+
+//            array_push($datalengkap, array($persentaselengkapdokterbulan, $persentaselengkapperawatbulan, $nilailengkapdokter, $nilailengkapperawat, $nilaitotaldokter, $nilaitotalperawat));
+//            array_push($datatidaklengkap, array($persentasetidaklengkapdokterbulan, $persentasetidaklengkapperawatbulan, $nilaitidaklengkapdokter, $nilaitidaklengkapperawat, $nilaitotaldokter, $nilaitotalperawat));
+            array_push($datalengkaptabel, array($persentaselengkapdokterbulan, $persentaselengkapperawatbulan, $nilaitotaldokter, $nilaitotalperawat));
+            array_push($datatidaklengkaptabel, array($persentasetidaklengkapdokterbulan, $persentasetidaklengkapperawatbulan, $nilaitotaldokter, $nilaitotalperawat));
+            array_push($datalengkap, array($persentaselengkapdokterbulan, $persentaselengkapperawatbulan));
+            array_push($datatidaklengkap, array($persentasetidaklengkapdokterbulan, $persentasetidaklengkapperawatbulan));
+        }
+
+        if ($request->input('kelengkapan') == 1) {
+            $data = $datalengkap;
+            $datatabel = $datalengkaptabel;
+            $text = "Mutu Kelengkapan Dokter dan Perawat 2x24jam";
+        } else {
+            $data = $datatidaklengkap;
+            $datatabel = $datatidaklengkaptabel;
+            $text = "Mutu Ketidaklengkapan Dokter dan Perawat 2x24jam";
+        }
+//        return $data;
+
+//        $chart = Chartisan::build()
+//            ->labels($bulantext)
+//            ->dataset('sample', $data);
+
+        $dataPDF = [
+            'data' => $data,
+            'datatabel' => $datatabel,
+            'text' => $text,
+            'tglawal' => $tglawal->translatedFormat('d F Y'),
+            'tglakhir' => $tglakhir->subMonth()->endOfMonth()->translatedFormat('d F Y'),
+            'bulan' => $bulantext,
+            'filename' => 'laporanmutu'.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
+        ];
+//        return view('laporanmutu', $dataPDF);
+        return Response::json([
+            'status' => 'success',
+            'data' => $dataPDF,
+        ], 200);
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadView('laporanmutu', $dataPDF);
+////        $pdf->setWarnings(true);
+//        $pdf->setPaper('A4', 'landscape');
+////        return $pdf->download("analisis.pdf");
+//        $pdffix = $pdf->output();
+//        $pdffix = base64_encode($pdffix);
+//        return Response::json([
+//            'status' => 'success',
+//            'data' => $pdffix,
+//            'filename' => 'laporanmutu'.'_'.date('d_m_Y', strtotime($tglawal)).'-'.date('d_m_Y', strtotime($tglakhir)),
+//        ], 200);
     }
 }

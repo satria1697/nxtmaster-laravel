@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get('/laporanmutu', function () {
+    return view('laporanmutu');
+});
+
 Route::prefix('v1')->group(function () {
     Route::prefix('auth')->group(function () {
         // Below mention routes are public, user can access those without any restriction.

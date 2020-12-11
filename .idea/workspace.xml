@@ -11,11 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="fixing">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/snappy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/laporanmutu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nxtoffice4_backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nxtoffice4_backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/dompdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/siska.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/siska.api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,11 +161,15 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/jamesdordoy/laravelvuedatatable" />
-      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/consoletvs/charts" />
+      <path value="$PROJECT_DIR$/vendor/chartisan/php" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-snappy" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
-      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jlqqFTfiCo3karDGrzpq72r9Bn" />
@@ -172,21 +186,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Workspace\nxtoffice4_backend\storage\app" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Workspace\nxtoffice4_backend\app\Models\Siska" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Http\Controllers\Siska" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Http\Controllers\Admin" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Models\Admin" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Http\Controllers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\nxtoffice4_backend\resources\views" />
+      <recent name="D:\Workspace\nxtoffice4_backend\storage\app" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -274,7 +289,13 @@
       <workItem from="1607324098172" duration="7000" />
       <workItem from="1607325508251" duration="188000" />
       <workItem from="1607325762301" duration="1244000" />
-      <workItem from="1607392309593" duration="4855000" />
+      <workItem from="1607392309593" duration="4856000" />
+      <workItem from="1607477174603" duration="7821000" />
+      <workItem from="1607492271962" duration="3035000" />
+      <workItem from="1607565397472" duration="7901000" />
+      <workItem from="1607595842333" duration="10838000" />
+      <workItem from="1607641038900" duration="2571000" />
+      <workItem from="1607651612728" duration="9264000" />
     </task>
     <task id="LOCAL-00001" summary="fixing">
       <created>1607326189031</created>
@@ -401,15 +422,16 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="1366" y="0" width="985" height="726" maximized="true" key="dock-window-2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1605862402675" />
-    <state x="430" y="0" width="681" height="738" key="find.popup" timestamp="1606707404855">
+    <state x="430" y="0" width="681" height="738" key="find.popup" timestamp="1607588177171">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="430" y="0" width="681" height="738" key="find.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606707404855" />
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1605077966160">
+    <state x="430" y="0" width="681" height="738" key="find.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607588177171" />
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1607477616210">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1605077966160" />
     <state x="1705" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738/1366.0.1366.738@1366.0.1366.738" timestamp="1604476231719" />
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1607477616210" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1607323872038">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

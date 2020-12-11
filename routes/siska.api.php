@@ -1,6 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
+
+//Route::prefix('pdf')->group(function() {
+//    Route::get('laporanmutu/data', function (Request $request) {
+//        return view('laporanmutu', data);
+//    });
+//});
 Route::middleware('auth:api')->group(function () {
     Route::prefix('siska')->group(function () {
         Route::prefix('status')->group(function() {
@@ -67,6 +74,7 @@ Route::middleware('auth:api')->group(function () {
             Route::post('update/{id}', 'LaporanController@update');
             Route::post('register', 'LaporanController@store');
             Route::get('laporan/data', 'LaporanController@laporan');
+            Route::get('laporan/mutu', 'LaporanController@laporanMutu');
         });
     });
 });

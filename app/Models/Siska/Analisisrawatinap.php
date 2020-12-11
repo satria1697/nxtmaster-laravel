@@ -18,6 +18,7 @@ class Analisisrawatinap extends Model
 
     protected $fillable = [
         'idranap',
+        'tglkeluar',
         'tglinput',
         'dokter_id',
         'perawat_id',
@@ -36,6 +37,9 @@ class Analisisrawatinap extends Model
 //        'idranap' => [
 //            'searchable' => true,
 //        ],
+        'tglkeluar' => [
+            'searchable' => false
+        ],
         'tglinput' => [
             'searchable' => true,
         ],

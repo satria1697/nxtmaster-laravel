@@ -18,6 +18,7 @@ class AnalisisrawatinapController extends Controller
     private function basecolumn() {
         return $basecolumn=[
             'idranap',
+            'tglkeluar',
             'tglinput',
             'dokter_id',
             'perawat_id',
@@ -30,6 +31,7 @@ class AnalisisrawatinapController extends Controller
     private function validation($data) {
         $rules = [
             'idranap' => 'required',
+            'tglkeluar' => 'required',
             'tglinput' => 'required',
             'dokter_id' => 'required',
             'perawat_id' => 'required',
