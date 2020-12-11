@@ -9,7 +9,7 @@ use JamesDordoy\LaravelVueDatatable\Traits\LaravelVueDatatableTrait;
 class StatusKelengkapan extends Model
 {
     use HasFactory, LaravelVueDatatableTrait;
-    protected $table = 'nxt_siska_kelengkapanstatus';
+    protected $table = 'nxt_siska_statuskelengkapan';
     public $timestamps = false;
 
     protected $fillable = [

@@ -52,9 +52,9 @@ class Analisisrawatinap extends Model
         'idformulir' => [
             'searchable' => true,
         ],
-        'idstatus' => [
-            'searchable' => true,
-        ],
+//        'idstatus' => [
+//            'searchable' => true,
+//        ],
         'jatuhtempo' => [
             'searchable' => true,
         ],
@@ -101,6 +101,16 @@ class Analisisrawatinap extends Model
                     ],
                 ],
             ],
+            'statuskelengkapan' => [
+                "model" => StatusKelengkapan::class,
+                'foreign_key' => 'idstatus',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ]
+                ]
+            ]
         ],
         "belongsToMany" => [
             "formulir" => [
@@ -140,5 +150,10 @@ class Analisisrawatinap extends Model
     public function ranap()
     {
         return $this->belongsTo(Rawatinap::class, 'idranap', 'id');
+    }
+
+    public function statuskelengkapan()
+    {
+        return $this->belongsTo(StatusKelengkapan::class, 'idstatus', 'id');
     }
 }

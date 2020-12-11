@@ -117,6 +117,7 @@ class AnalisisrawatinapController extends Controller
             'perawat',
             'dokter',
             'ranap',
+            'statuskelengkapan',
         ]);
 
         $data = $query->paginate($length);
@@ -130,7 +131,8 @@ class AnalisisrawatinapController extends Controller
             "formulir",
             'perawat',
             'dokter',
-            'ranap'
+            'ranap',
+            'statuskelengkapan',
         ]);
 
         $data = $query->where('nxt_siska_analisisrawatinap.id', '=', $id)->first();
