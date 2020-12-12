@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Hospital;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hospital\Operasi;
 use App\Models\Hospital\Rawatinap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -14,31 +15,32 @@ class RawatinapController extends Controller
     /* base */
     private function basecolumn() {
         return $basecolumn=[
-            'idpasien',
+            'pasien_id',
             'norm',
             'tglmasuk',
             'tglkeluar',
-            'idkelas',
-            'idbangsal',
-            'idkamar',
-            'iddokter',
+            'kelas_id',
+            'bangsal_id',
+            'kamar_id',
+            'dokter_id',
             'jeniskasus',
             'tindakan',
             'caramasuk',
             'ketpulang',
             'carabayar',
+            'operasi_id'
         ];
     }
 
     private function validation($data) {
         $rules = [
-            'idpasien' => 'required|numeric',
+            'pasien_id' => 'required|numeric',
             'norm' => 'required',
             'tglmasuk' => 'required',
-            'idkelas' => 'required|numeric',
-            'idbangsal' => 'required|numeric',
-            'idkamar' => 'required|numeric',
-            'iddokter' => 'required|numeric',
+            'kelas_id' => 'required|numeric',
+            'bangsal_id' => 'required|numeric',
+            'kamar_id' => 'required|numeric',
+            'dokter_id' => 'required|numeric',
             'caramasuk' => 'required|numeric',
             'ketpulang' => 'required|numeric',
             'carabayar' => 'required|numeric',
@@ -110,6 +112,7 @@ class RawatinapController extends Controller
             'kamarranap',
             'dokter',
             'pasien',
+            'operasi',
         ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
@@ -123,6 +126,7 @@ class RawatinapController extends Controller
             'kamarranap',
             'dokter',
             'pasien',
+            'operasi',
         ]);
         $data = $query->where('nxt_hospital_rawatinap.id', '=', $id)->first();
         if (is_null($data)) {
@@ -159,11 +163,43 @@ class RawatinapController extends Controller
         }
 
         $basecolumn = $this->basecolumn();
+//        return $request;
         try {
             foreach ($basecolumn as $base) {
                 $data->update([
                     $base => $request->input($base)
                 ]);
+            }
+            $operasibasecolumn=[
+                'tgloperasi',
+//                'tglkeluar',
+                'dokter_id',
+                'dokteranestesi_id',
+//                'icd10_id',
+                'tindakan',
+                'jenisanestesi',
+                'perawat_id',
+            ];
+            $operasidata = json_decode($request->input('operasi'), true);
+            if ($request->input('operasi_id') == "undefined") {
+                $operasi = new Operasi();
+                foreach ($operasibasecolumn as $base) {
+                    $operasi->{$base} = $operasidata[$base];
+                }
+                $operasi->ranap_id = $id;
+                $operasi->save();
+            } else {
+                $operasi = Operasi::find($request->input('operasi_id'))->first();
+//                return Response::json([
+//                    'data1' => $operasi,
+//                    'data2' => $operasidata,
+//                ], 403);
+                foreach ($operasibasecolumn as $base) {
+//                    return $operasidata[$base];
+                    $operasi->update([
+                        $base => $operasidata[$base]
+                    ]);
+                }
             }
             return Response::json([
                 'status' => 'success'
@@ -171,7 +207,8 @@ class RawatinapController extends Controller
         } catch(\Throwable $tr) {
             return Response::json([
                 'error' => 'error_update',
-            ],304);
+                'data' => $tr,
+            ],403);
         }
     }
 

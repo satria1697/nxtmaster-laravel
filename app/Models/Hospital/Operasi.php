@@ -13,21 +13,22 @@ class Operasi extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idranap',
+        'ranap_id',
         'tgloperasi',
         'tglkeluar',
-        'iddokter',
-        'idicd10',
+        'dokter_id',
+        'dokteranestesi_id',
+        'icd10_id',
         'tindakan',
         'jenisanestesi',
-        'idperawat',
+        'perawat_id',
     ];
 
     protected $dataTableColumns = [
         'id' => [
             'searchable' => false,
         ],
-        'idranap' => [
+        'ranap_id' => [
             'searchable' => true,
         ],
         'tgloperasi' => [
@@ -36,10 +37,13 @@ class Operasi extends Model
         'tglkeluar' => [
             'searchable' => true,
         ],
-        'iddokter' => [
+        'dokter_id' => [
             'searchable' => true,
         ],
-        'idicd10' => [
+        'dokteranestesi_id' => [
+            'searchable' => true,
+        ],
+        'icd10_id' => [
             'searchable' => true,
         ],
         'tindakan' => [
@@ -48,7 +52,7 @@ class Operasi extends Model
         'jenisanestesi' => [
             'searchable' => true,
         ],
-        'idperawat' => [
+        'perawat_id' => [
             'searchable' => true,
         ],
     ];

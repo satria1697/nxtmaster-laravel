@@ -110,6 +110,16 @@ class Rawatinap extends Model
                     ],
                 ],
             ],
+            'operasi' => [
+                "model" => Operasi::class,
+                'foreign_key' => 'operasi_id',
+                'columns' => [
+                    'iddokter' => [
+                        'description' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
         ]
     ];
 
@@ -136,5 +146,10 @@ class Rawatinap extends Model
     public function pasien()
     {
         return $this->belongsTo(Pasien::class, 'pasien_id', 'id');
+    }
+
+    public function operasi()
+    {
+        return $this->belongsTo(Operasi::class, 'operasi_id', 'id');
     }
 }

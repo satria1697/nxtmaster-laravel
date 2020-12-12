@@ -75,6 +75,7 @@ Route::middleware('auth:api')->group(function () {
             Route::post('register', 'LaporanController@store');
             Route::get('laporan/data', 'LaporanController@laporan');
             Route::get('laporan/mutu', 'LaporanController@laporanMutu');
+            Route::get('laporan/operasi', 'LaporanController@laporanoperasi');
         });
     });
 });

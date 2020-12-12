@@ -82,10 +82,10 @@ class AnalisisDataController extends Controller
                 else if ($cd['id'] == 2) {
                     $data->perawat_id = $request->input('perawat_id');
                 }
-//                else {
-//                    $data->perawat_id = $request->input('perawat_id');
-//                    $data->dokter_id = $request->input('dokter_id');
-//                }
+                else if ($cd['id'] == 9) {
+                    $data->perawat_id = $request->input('perawat_id');
+                    $data->dokter_id = $request->input('dokter_id');
+                }
                 $nilaianalis+=$c['nilai'];
                 $nilaitotal+=2;
 
@@ -202,10 +202,10 @@ class AnalisisDataController extends Controller
                     else if ($cd['id'] == 2) {
                         $data->perawat_id = $request->input('perawat_id');
                     }
-//                    else {
-//                        $data->perawat_id = $request->input('perawat_id');
-//                        $data->dokter_id = $request->input('dokter_id');
-//                    }
+                    else if ($cd['id'] == 9) {
+                        $data->perawat_id = $request->input('perawat_id');
+                        $data->dokter_id = $request->input('dokter_id');
+                    }
                     $nilaianalis+=$c['nilai'];
                     $nilaitotal+=2;
 

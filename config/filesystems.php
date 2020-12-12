@@ -44,7 +44,7 @@ return [
     'disks' => [
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app\images'),
+            'root' => storage_path('app'),
             'permissions' => [
                 'file' => [
                     'public' => 0664,

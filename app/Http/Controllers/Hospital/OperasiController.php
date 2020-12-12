@@ -18,6 +18,7 @@ class OperasiController extends Controller
             'tgloperasi',
             'tglkeluar',
             'iddokter',
+            'iddokteranestesi',
             'idicd10',
             'tindakan',
             'jenisanestesi',
@@ -71,7 +72,6 @@ class OperasiController extends Controller
             ], 422);
         };
 
-        $data = new Operasi();
         $basecolumn = $this->basecolumn();
         foreach ($basecolumn as $base) {
             $data->{$base} = $request->input($base);

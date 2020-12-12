@@ -14,8 +14,8 @@ class OptionController extends Controller
     public function index() {
         $data = Option::all();
         foreach ($data as $d){
-            if (Storage::exists($d['avatar'])) {
-                $image = Storage::path($d['avatar']);
+            if (Storage::exists('images/'.$d['avatar'])) {
+                $image = Storage::path('images/'.$d['avatar']);
                 if (pathinfo($image)['extension'] === 'jpg' or pathinfo($image)['extension'] === 'jpeg') {
                     $image64 = 'data:image/jpeg;base64,'.base64_encode(file_get_contents($image));
                 } elseif (pathinfo($image)['extension'] === 'png') {
@@ -46,7 +46,7 @@ class OptionController extends Controller
                 $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
             }
             $now = Carbon::now()->timestamp;
-            Storage::put($now . '.jpg', $avatar);
+            Storage::put('images/'.$now . '.jpg', $avatar);
             $avatarFile = $now . '.jpg';
         }
 

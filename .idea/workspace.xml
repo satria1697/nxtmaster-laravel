@@ -12,9 +12,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="fixing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/StatusKelengkapan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/StatusKelengkapan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/OperasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/OperasiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Operasi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Operasi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/siska.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/siska.api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,16 +188,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\nxtoffice4_backend\resources\views" />
+      <recent name="D:\Workspace\nxtoffice4_backend\storage\app" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Workspace\nxtoffice4_backend\app\Models\Siska" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Http\Controllers\Siska" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Http\Controllers\Admin" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Models\Admin" />
       <recent name="D:\Workspace\nxtoffice4_backend\app\Http\Controllers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Workspace\nxtoffice4_backend\resources\views" />
-      <recent name="D:\Workspace\nxtoffice4_backend\storage\app" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -285,6 +292,8 @@
       <workItem from="1607595842333" duration="10838000" />
       <workItem from="1607641038900" duration="2571000" />
       <workItem from="1607651612728" duration="11932000" />
+      <workItem from="1607738123512" duration="1535000" />
+      <workItem from="1607743539821" duration="8254000" />
     </task>
     <task id="LOCAL-00001" summary="fixing">
       <created>1607326189031</created>
@@ -411,10 +420,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="1366" y="0" width="985" height="726" maximized="true" key="dock-window-2/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1605862402675" />
-    <state x="430" y="0" width="681" height="738" key="find.popup" timestamp="1607588177171">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="1796" y="0" width="681" height="738" key="find.popup" timestamp="1607741257142">
+      <screen x="1366" y="0" width="1366" height="738" />
     </state>
     <state x="430" y="0" width="681" height="738" key="find.popup/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607588177171" />
+    <state x="1796" y="0" width="681" height="738" key="find.popup/0.0.1366.738/1366.0.1366.738@1366.0.1366.738" timestamp="1607741257142" />
     <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1607477616210">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
