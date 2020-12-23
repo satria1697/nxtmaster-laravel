@@ -15,7 +15,8 @@ class FormulirData extends Model
     protected $fillable = [
         'description',
         'formulirid',
-        'keyid'
+        'keyid',
+        'keterangan',
     ];
 
     protected $dataTableColumns = [
@@ -29,6 +30,9 @@ class FormulirData extends Model
 //            'searchable' => true,
 //        ],
         'keyid' => [
+            'searchable' => false,
+        ],
+        'keterangan' => [
             'searchable' => false,
         ],
     ];

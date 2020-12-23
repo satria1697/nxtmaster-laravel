@@ -152,4 +152,9 @@ class Rawatinap extends Model
     {
         return $this->belongsTo(Operasi::class, 'operasi_id', 'id');
     }
+
+    public function kamar()
+    {
+        return $this->belongsTo(Kamarrawatinap::class, 'kamar_id', 'id');
+    }
 }

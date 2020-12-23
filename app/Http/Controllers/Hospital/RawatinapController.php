@@ -28,7 +28,7 @@ class RawatinapController extends Controller
             'caramasuk',
             'ketpulang',
             'carabayar',
-            'operasi_id'
+//            'operasi_id'
         ];
     }
 
@@ -88,6 +88,26 @@ class RawatinapController extends Controller
 
         try {
             $data->save();
+            $id = $data->id;
+            $operasibasecolumn=[
+                'tgloperasi',
+//                'tglkeluar',
+                'dokter_id',
+                'dokteranestesi_id',
+//                'icd10_id',
+                'tindakan',
+                'jenisanestesi',
+                'perawat_id',
+            ];
+            $operasidata = json_decode($request->input('operasi'), true);
+            if ($request->input('isoperasi')) {
+                $operasi = new Operasi();
+                foreach ($operasibasecolumn as $base) {
+                    $operasi->{$base} = $operasidata[$base];
+                }
+                $operasi->ranap_id = $id;
+                $operasi->save();
+            }
         } catch (\Throwable $tr) {
             return Response::json([
                 'status' => 'error',
@@ -113,6 +133,7 @@ class RawatinapController extends Controller
             'dokter',
             'pasien',
             'operasi',
+            'kamar',
         ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
@@ -127,6 +148,7 @@ class RawatinapController extends Controller
             'dokter',
             'pasien',
             'operasi',
+            'kamar',
         ]);
         $data = $query->where('nxt_hospital_rawatinap.id', '=', $id)->first();
         if (is_null($data)) {

@@ -2,6 +2,7 @@
 
 namespace App\Models\Hospital;
 
+use App\Models\Siska\Analisisrawatinap;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use JamesDordoy\LaravelVueDatatable\Traits\LaravelVueDatatableTrait;
@@ -70,5 +71,9 @@ class TenagaMedis extends Model
     public function jenis()
     {
         return $this->belongsTo(JenisTenagaMedis::class, 'jenis_id', 'id');
+    }
+
+    public function analisrawatinap() {
+        return $this->hasMany(Analisisrawatinap::class, 'id');
     }
 }

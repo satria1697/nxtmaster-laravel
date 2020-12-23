@@ -16,7 +16,8 @@ class FormulirDataController extends Controller
         return $basecolumn=[
             'description',
             'formulirid',
-            'keyid'
+            'keyid',
+            'keterangan'
         ];
     }
 

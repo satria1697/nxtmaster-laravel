@@ -137,15 +137,15 @@ class Analisisrawatinap extends Model
         return $this->belongsToMany(\App\Models\Siska\Formulir::class, 'nxt_siska_analisisformulir', 'analisisid', 'formulirid');
     }
 
-    public function dokter()
-    {
-        return $this->belongsTo(TenagaMedis::class, 'jenis_id', 'id');
-    }
-
-    public function perawat()
-    {
-        return $this->belongsTo(TenagaMedis::class, 'jenis_id', 'id');
-    }
+//    public function dokter()
+//    {
+//        return $this->belongsTo(TenagaMedis::class, 'jenis_id', 'id');
+//    }
+//
+//    public function perawat()
+//    {
+//        return $this->belongsTo(TenagaMedis::class, 'jenis_id', 'id');
+//    }
 
     public function ranap()
     {

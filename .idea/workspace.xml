@@ -11,17 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="fixing">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/Jeniskelamincontroller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Hospital/Jeniskelamin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/OperasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/OperasiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/JenisTenagaMedisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/JenisTenagaMedisController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PasienController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PasienController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Operasi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Operasi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/JenisTenagaMedis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/JenisTenagaMedis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Pasien.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Pasien.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/siska.api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/siska.api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/TenagaMedis.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Hospital/TenagaMedis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/AnalisisData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/AnalisisData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siska/FormulirData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Siska/FormulirData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,9 +191,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -294,6 +303,16 @@
       <workItem from="1607651612728" duration="11932000" />
       <workItem from="1607738123512" duration="1535000" />
       <workItem from="1607743539821" duration="8254000" />
+      <workItem from="1607998445371" duration="4078000" />
+      <workItem from="1608022694580" duration="607000" />
+      <workItem from="1608083806817" duration="600000" />
+      <workItem from="1608100234798" duration="2657000" />
+      <workItem from="1608170754971" duration="2684000" />
+      <workItem from="1608250499811" duration="199000" />
+      <workItem from="1608256940129" duration="3354000" />
+      <workItem from="1608342287773" duration="3263000" />
+      <workItem from="1608516092931" duration="1188000" />
+      <workItem from="1608602913938" duration="591000" />
     </task>
     <task id="LOCAL-00001" summary="fixing">
       <created>1607326189031</created>
@@ -347,10 +366,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606902458033" />
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607304085541">
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608282496095">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606975768222" />
+    <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1608282496095" />
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1607304085541" />
     <state x="306" y="0" key="CommitChangelistDialog2" timestamp="1607326231100">
       <screen x="0" y="0" width="1366" height="738" />
@@ -364,10 +383,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1606720778032" />
-    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1607325825179">
+    <state x="463" y="124" key="FileChooserDialogImpl" timestamp="1608091621844">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607325825179" />
+    <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1608091621844" />
     <state x="1829" y="124" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1366.738@1366.0.1366.738" timestamp="1604455295860" />
     <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1604455423088">
       <screen x="1366" y="0" width="1366" height="738" />
@@ -394,10 +413,10 @@
     </state>
     <state x="516" y="288" key="NewPhpFileDialog/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1604888121565" />
     <state x="516" y="288" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1606865986629" />
-    <state x="173" y="10" key="SettingsEditor" timestamp="1607325723452">
+    <state x="173" y="10" key="SettingsEditor" timestamp="1608100366666">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="173" y="10" key="SettingsEditor/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1607325723452" />
+    <state x="173" y="10" key="SettingsEditor/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1608100366666" />
     <state x="173" y="10" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1607217664900" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1604891952748">
       <screen x="0" y="0" width="1366" height="738" />

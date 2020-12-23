@@ -19,12 +19,12 @@ class PasienController extends Controller
             'tempatlahir',
             'tanggallahir',
             'usia',
-            'jeniskelamin',
-            'agama',
+            'jeniskelamin_id',
+            'agama_id',
             'alamat',
             'wilayah_id',
-            'pendidikan',
-            'pekerjaan',
+            'pendidikan_id',
+            'pekerjaan_id',
             'nohp',
             'asuransi',
             'nopeserta',
@@ -103,14 +103,26 @@ class PasienController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = Pasien::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = Pasien::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'agama',
+            'pekerjaan',
+            'pendidikan',
+            'jeniskelamin',
+        ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $data = Pasien::find($id);
+//        $data = Pasien::find($id);
+        $query = Pasien::eloquentQuery('id', 'asc', '', [
+            'agama',
+            'pekerjaan',
+            'pendidikan',
+            'jeniskelamin',
+        ]);
+        $data = $query->where('nxt_hospital_pasien.id', '=', $id)->first();
         if (is_null($data)) {
             return Response::json([
                 'error' => 'Data tidak ditemukan'

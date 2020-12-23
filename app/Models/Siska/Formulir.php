@@ -26,7 +26,7 @@ class Formulir extends Model
         ],
         'required' => [
             'searchable' => false,
-        ]
+        ],
     ];
 
     protected $dataTableRelationships = [

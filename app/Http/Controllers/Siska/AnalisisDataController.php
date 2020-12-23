@@ -149,6 +149,7 @@ class AnalisisDataController extends Controller
                 $childobj->id = $dat['idformulirdata'];
                 $childobj->nilai = $dat['nilai'];
                 $childobj->value = $dat['value'];
+                $childobj->keterangan = $dat['keterangan'];
 
                 array_push($childData, $childobj);
             }
@@ -196,6 +197,7 @@ class AnalisisDataController extends Controller
                         ->first();
                     $data->nilai = $c['nilai'];
                     $data->value = $c['value'];
+                    $data->keterangan = $c['keterangan'];
                     if ($cd['id'] == 1) {
                         $data->dokter_id = $request->input('dokter_id');
                     }

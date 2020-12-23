@@ -18,12 +18,12 @@ class Pasien extends Model
         'tempatlahir',
         'tanggallahir',
         'usia',
-        'jeniskelamin',
-        'agama',
+        'jeniskelamin_id',
+        'agama_id',
         'alamat',
         'wilayah_id',
-        'pendidikan',
-        'pekerjaan',
+        'pendidikan_id',
+        'pekerjaan_id',
         'nohp',
         'asuransi',
         'nopeserta',
@@ -50,24 +50,24 @@ class Pasien extends Model
         'usia' => [
             'searchable' => true,
         ],
-        'jeniskelamin' => [
-            'searchable' => true,
-        ],
-        'agama' => [
-            'searchable' => true,
-        ],
+//        'jeniskelamin' => [
+//            'searchable' => true,
+//        ],
+//        'agama' => [
+//            'searchable' => true,
+//        ],
         'alamat' => [
             'searchable' => true,
         ],
         'wilayah_id' => [
             'searchable' => true,
         ],
-        'pendidikan' => [
-            'searchable' => true,
-        ],
-        'pekerjaan' => [
-            'searchable' => true,
-        ],
+//        'pendidikan' => [
+//            'searchable' => true,
+//        ],
+//        'pekerjaan' => [
+//            'searchable' => true,
+//        ],
         'nohp' => [
             'searchable' => true,
         ],
@@ -84,4 +84,69 @@ class Pasien extends Model
             'searchable' => true,
         ],
     ];
+
+    protected $dataTableRelationships = [
+        "belongsTo" => [
+            'agama' => [
+                "model" => Agama::class,
+                'foreign_key' => 'agama_id',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'pendidikan' => [
+                "model" => Pendidikan::class,
+                'foreign_key' => 'pendidikan_id',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'pekerjaan' => [
+                "model" => Pekerjaan::class,
+                'foreign_key' => 'pekerjaan_id',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+            'jeniskelamin' => [
+                "model" => Jeniskelamin::class,
+                'foreign_key' => 'jeniskelamin_id',
+                'columns' => [
+                    'description' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+        ]
+    ];
+
+    public function agama()
+    {
+        return $this->belongsTo(Agama::class, 'agama_id', 'id');
+    }
+
+    public function pendidikan()
+    {
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_id', 'id');
+    }
+
+    public function pekerjaan()
+    {
+        return $this->belongsTo(Pekerjaan::class, 'pekerjaan_id', 'id');
+    }
+
+    public function jeniskelamin()
+    {
+        return $this->belongsTo(Jeniskelamin::class, 'jeniskelamin_id', 'id');
+    }
 }

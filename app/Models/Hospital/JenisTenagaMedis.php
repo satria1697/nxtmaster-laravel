@@ -24,4 +24,23 @@ class JenisTenagaMedis extends Model
             'searchable' => true,
         ],
     ];
+
+    protected $dataTableRelationships = [
+        "hasMany" => [
+            'tenagamedis' => [
+                "model" => TenagaMedis::class,
+                'foreign_key' => 'jenis_id',
+                'columns' => [
+                    'nama' => [
+                        'searchable' => true,
+                        'orderable' => true,
+                    ],
+                ],
+            ],
+        ]
+    ];
+
+    public function tenagamedis() {
+        return $this->hasMany(TenagaMedis::class, 'jenis_id', 'id');
+    }
 }

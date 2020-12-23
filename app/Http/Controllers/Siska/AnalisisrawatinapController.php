@@ -80,6 +80,7 @@ class AnalisisrawatinapController extends Controller
         $data->save();
         $id = $data->id;
         $formulir = json_decode($request->input('formulir'), true);
+//        return $formulir;
         foreach ($formulir as $a) {
             $analisisform = AnalisisFormulir::where('analisisid', '=', $id)->where('formulirid', '=', $a['id'])->first();
             if (! is_null($analisisform)) {
@@ -184,6 +185,7 @@ class AnalisisrawatinapController extends Controller
             }
 
             $formulir = json_decode($request->input('formulir'), true);
+//            return $formulir;
             foreach ($formulir as $a) {
                 $analisisform = AnalisisFormulir::where('analisisid', '=', $id)->where('formulirid', '=', $a['id'])->first();
                 if (! is_null($analisisform)) {

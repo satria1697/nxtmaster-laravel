@@ -84,14 +84,18 @@ class JenisTenagaMedisController extends Controller
         $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
-        $query = JenisTenagaMedis::eloquentQuery($sortBy, $orderBy, $searchValue);
+        $query = JenisTenagaMedis::eloquentQuery($sortBy, $orderBy, $searchValue, [
+            'tenagamedis'
+        ]);
         $data = $query->paginate($length);
         return new DataTableCollectionResource($data);
     }
 
     public function show($id)
     {
-        $query = JenisTenagaMedis::eloquentQuery('id', 'asc', '');
+        $query = JenisTenagaMedis::eloquentQuery('id', 'asc', '', [
+            'tenagamedis'
+        ]);
         $data = $query->where('id', '=', $id);
         if (is_null($data)) {
             return Response::json([
