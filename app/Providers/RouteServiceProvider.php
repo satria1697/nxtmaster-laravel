@@ -19,9 +19,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
-    protected $hospitalapiNamespace = 'App\Http\Controllers\Hospital';
-    protected $siskaapiNamespace = 'App\Http\Controllers\Siska';
-
     /**
      * The controller namespace for the application.
      *
@@ -50,15 +47,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->hospitalapiNamespace)
-                ->group(base_path('routes/hospital.api.php'));
-
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->siskaapiNamespace)
-                ->group(base_path('routes/siska.api.php'));
         });
     }
 

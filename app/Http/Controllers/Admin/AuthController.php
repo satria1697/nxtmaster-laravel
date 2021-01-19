@@ -172,6 +172,8 @@ class AuthController extends Controller
                     $image64 = 'data:image/png;base64,'.base64_encode(file_get_contents($image));
                 }
                 $d['avatar'] = $image64;
+            } else {
+                $d['avatar'] = null;
             }
             unset($d);
         }
@@ -220,6 +222,8 @@ class AuthController extends Controller
                 $image64 = 'data:image/png;base64,'.base64_encode(file_get_contents($image));
             }
             $user['avatar'] = $image64;
+        } else {
+            $user['avatar'] = null;
         }
 
 

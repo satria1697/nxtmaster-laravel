@@ -22,6 +22,8 @@ class OptionController extends Controller
                     $image64 = 'data:image/png;base64,'.base64_encode(file_get_contents($image));
                 }
                 $d['avatar'] = $image64;
+            } else {
+                $d['avatar'] = null;
             }
             unset($d);
         }
@@ -34,7 +36,7 @@ class OptionController extends Controller
     public function update(Request $request, $id) {
         $data = Option::find($id);
 
-        if ($request->avatar == "") {
+        if ($request->avatar == "null") {
             $avatarFile = null;
         } else {
             $avatar64 = $request->avatar;
