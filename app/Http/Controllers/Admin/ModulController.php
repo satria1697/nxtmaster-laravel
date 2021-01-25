@@ -41,7 +41,7 @@ class ModulController extends Controller
 
     public function DataId($id)
     {
-        $data = Modul::find($id);
+        $data = Modul::with('application')->find($id);
         if (is_null($data)) {
             return response()->json([
                 'error' => 'Data tidak ditemukan'

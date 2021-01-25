@@ -40,7 +40,6 @@ class AuthController extends Controller
 
     private function validation($data) {
         $rules = [
-            'password'  => 'required|min:3|confirmed',
             'fullname' => 'required|min:3',
             'levelid' => 'required|numeric',
             'rankid' => 'required|numeric',
@@ -61,29 +60,6 @@ class AuthController extends Controller
         return true;
     }
 
-    private function avatar64($avatar64) {
-        if ($avatar64 != "null") {
-//            return $avatar64;
-            $extension =  explode('/', mime_content_type($avatar64))[1];
-            if ($extension === 'jpeg' or $extension === 'jpg') {
-                $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
-            }
-            elseif ($extension === 'png') {
-                $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
-            }
-            else {
-                return Response::json([
-                    'error' => 'Gambar tidak dapat disimpan',
-                ]);
-            }
-            $now = Carbon::now()->timestamp;
-            Storage::put('/images/'.$now.'.jpg', $avatar);
-            return $now.'.jpg';
-        } else {
-            return null;
-        }
-    }
-
     /**
      * Register a new user
      * @param Request $request
@@ -91,11 +67,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-//        if (! $this->can(3)) {
-//            return Response::json([
-//                'error' => 'Tidak memiliki otorisasi'
-//            ], 403);
-//        }
+
         $value = $this->validation($request->all());
         $status = $value[0];
         $v = $value[1];
@@ -126,6 +98,25 @@ class AuthController extends Controller
 
         //Avatar Image
         $avatar64 = $this->avatar64($request->input('avatar'));
+        if ($avatar64 != "null") {
+            $extension =  explode('/', mime_content_type($avatar64))[1];
+            if ($extension === 'jpeg' or $extension === 'jpg') {
+                $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
+            }
+            elseif ($extension === 'png') {
+                $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
+            }
+            else {
+                return Response::json([
+                    'error' => 'Gambar tidak dapat disimpan',
+                ]);
+            }
+            $now = Carbon::now()->timestamp;
+            Storage::put('/images/'.$now.'.jpg', $avatar);
+            $avatar64 = $now.'jpg';
+        } else {
+            $avatar64 = null;
+        }
         $data->avatar = $avatar64;
 
         $data->save();
@@ -191,15 +182,8 @@ class AuthController extends Controller
         $levelid = auth()->payload()->get('levelid');
         $userid = auth()->payload()->get('sub');
 
-        $query = User::eloquentQuery('id', 'asc', '', [
-            'level',
-            'rank',
-            'structure',
-            'akses',
-        ]);
-        $query = $query->where('nxt_users.id', '=', $id);
+        $user = User::with('level', 'rank', 'structure', 'akses')->find($id);
 
-        $user = $query->first();
         if (is_null($user)) {
             return response()->json([
                 'error' => 'Data tidak ditemukan'
@@ -257,7 +241,7 @@ class AuthController extends Controller
             ], 422);
         }
 
-        if ($request->avatarChange === "true") {
+        if ($request->avatarChange === true) {
             if ($request->avatar == "") {
                 $avatarFile = null;
             } else {
@@ -265,13 +249,12 @@ class AuthController extends Controller
                 $extension = explode('/', mime_content_type($avatar64))[1];
                 if ($extension === 'jpeg' or $extension === 'jpg') {
                     $avatar = base64_decode(str_replace('data:image/jpeg;base64,', '', $avatar64));
-                    return $avatar;
                 } elseif ($extension === 'png') {
                     $avatar = base64_decode(str_replace('data:image/png;base64,', '', $avatar64));
                 }
                 $now = Carbon::now()->timestamp;
                 Storage::put('images/'.$now . '.jpg', $avatar);
-                $avatarFile = $now . '.jpg';
+                $avatarFile = $now.'.jpg';
             }
         }
 
@@ -284,13 +267,13 @@ class AuthController extends Controller
                     $base => $request->input($base)
                 ]);
             }
-            if ($request->avatarChange === "true") {
+            if ($request->avatarChange === true) {
                 $data->update([
                     'avatar' => $avatarFile
                 ]);
             }
 
-            if ($request->password != "undefined") {
+            if ($request->password != null) {
                 $data->update([
                     'password' => bcrypt($request->password),
                 ]);
@@ -325,16 +308,10 @@ class AuthController extends Controller
 
     /* delete */
     public function delete($id) {
-//        if (! $this->can()) {
-//            return Response::json([
-//                'error' => 'Tidak memiliki otorisasi',
-//            ], 403);
-//        }
 
         $data = User::find($id);
         if (is_null($data)) {
             return response()->json([
-//                'status' => 'error',
                 'error' => 'Data tidak ditemukan'
             ], 404);
         }

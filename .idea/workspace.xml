@@ -11,67 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c61a325-c5d7-40e0-94dd-c7e32fbf68d4" name="Default Changelist" comment="fixing">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/AgamaController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/BangsalController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/DiagnosisrawatinapController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/DokterController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/IcdController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/JenisTenagaMedisController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/Jeniskelamincontroller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/KamarrawatinapController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/KelasrawatinapController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/OperasiController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PasienController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PekerjaanController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PendidikanController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/PerawatController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/RawatinapController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/SpesialisasiController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/TenagaMedisController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Hospital/WilayahController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisDataController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisFormulirController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisoperasiController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/AnalisisrawatinapController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/FormulirDataController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/LaporanController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/StatusController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Siska/StatusKelengkapanController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Agama.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Bangsal.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Diagnosisrawatinap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Dokter.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Icd.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/JenisTenagaMedis.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Jeniskelamin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Kamarrawatinap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Kelasrawatinap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Operasi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Pasien.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Pekerjaan.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Pendidikan.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Perawat.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Rawatinap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Spesialisasi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/TenagaMedis.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Hospital/Wilayah.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/AnalisisData.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/AnalisisFormulir.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisoperasi.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Analisisrawatinap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Formulir.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/FormulirData.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Laporan.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/Status.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Siska/StatusKelengkapan.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/hospital.api.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/siska.api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModulController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModulController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/laporankelengkapan.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/laporanmutu.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pdf.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +300,8 @@
       <workItem from="1608516092931" duration="1188000" />
       <workItem from="1608602913938" duration="591000" />
       <workItem from="1611031150758" duration="153000" />
-      <workItem from="1611031371031" duration="2698000" />
+      <workItem from="1611031371031" duration="3083000" />
+      <workItem from="1611546473387" duration="5199000" />
     </task>
     <task id="LOCAL-00001" summary="fixing">
       <created>1607326189031</created>
