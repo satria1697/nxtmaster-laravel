@@ -398,11 +398,7 @@ class AuthController extends Controller
 
     public function GetAkses(Request $request) {
         $username = $request->input('username');
-        $query = User::eloquentQuery('id', 'asc', '', [
-            "akses",
-        ]);
-        $query = $query->where("username", "=", $username);
-        $data = $query->get();
+        $data = User::with('akses')->where("username", "=", $username)->get();
         return Response::json([
             'status' => 'success',
             'data' => $data,
